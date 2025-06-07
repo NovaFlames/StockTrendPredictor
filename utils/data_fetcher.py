@@ -39,20 +39,15 @@ class StockDataFetcher:
         
         for attempt in range(max_retries):
             try:
-                # Create ticker object with session for better reliability
-                session = requests.Session()
-                session.headers.update({
-                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
-                })
-                
-                ticker = yf.Ticker(symbol, session=session)
+                # Create ticker object - let yfinance handle its own session
+                ticker = yf.Ticker(symbol)
                 
                 # Add delay between requests to avoid rate limiting
                 if attempt > 0:
                     time.sleep(retry_delay * attempt)
                 
-                # Fetch historical data
-                data = ticker.history(start=start_date, end=end_date, timeout=30)
+                # Fetch historical data without timeout parameter
+                data = ticker.history(start=start_date, end=end_date)
                 
                 if data.empty:
                     if attempt < max_retries - 1:
