@@ -241,8 +241,8 @@ def main():
                 rmse = np.sqrt(mse)
                 
                 # Display metrics in a nice format
-                st.metric("Root Mean Square Error", f"${rmse:.2f}")
-                st.metric("Mean Absolute Error", f"${mae:.2f}")
+                st.metric("Root Mean Square Error", f"₹{rmse:.2f}")
+                st.metric("Mean Absolute Error", f"₹{mae:.2f}")
                 
                 # Display stock info
                 st.subheader("📋 Stock Information")
@@ -253,7 +253,7 @@ def main():
                     
                     st.metric(
                         "Latest Price", 
-                        f"${latest_price:.2f}",
+                        f"₹{latest_price:.2f}",
                         delta=f"{price_change:+.2f} ({price_change_pct:+.2f}%)"
                     )
                     
@@ -268,7 +268,7 @@ def main():
                         
                         st.metric(
                             f"Avg. Price ({prediction_days} days)",
-                            f"${future_avg:.2f}",
+                            f"₹{future_avg:.2f}",
                             delta=f"{predicted_change:+.2f} ({predicted_change_pct:+.2f}%)"
                         )
                         

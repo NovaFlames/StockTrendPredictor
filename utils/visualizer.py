@@ -66,7 +66,7 @@ class StockVisualizer:
         fig.update_layout(
             title=f"{symbol} - Historical Stock Data",
             xaxis_title="Date",
-            yaxis_title="Price ($)",
+            yaxis_title="Price (₹)",
             height=600,
             showlegend=False
         )
@@ -125,9 +125,9 @@ class StockVisualizer:
         mae = np.mean(np.abs(actual - predicted))
         
         fig.update_layout(
-            title=f"{symbol} - Actual vs Predicted Prices<br><sub>RMSE: ${rmse:.2f} | MAE: ${mae:.2f}</sub>",
+            title=f"{symbol} - Actual vs Predicted Prices<br><sub>RMSE: ₹{rmse:.2f} | MAE: ₹{mae:.2f}</sub>",
             xaxis_title="Date",
-            yaxis_title="Price ($)",
+            yaxis_title="Price (₹)",
             height=500,
             hovermode='x unified'
         )
@@ -229,7 +229,7 @@ class StockVisualizer:
         fig.update_layout(
             title=f"{symbol} - Future Price Predictions ({prediction_days} days)",
             xaxis_title="Date",
-            yaxis_title="Price ($)",
+            yaxis_title="Price (₹)",
             height=500,
             hovermode='x unified'
         )
