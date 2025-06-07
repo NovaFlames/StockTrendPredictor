@@ -152,9 +152,7 @@ def main():
                 
                 if stock_data is None or stock_data.empty:
                     st.error(f"❌ Could not fetch data for symbol '{stock_symbol}'. Please check if the symbol is valid.")
-                    st.stop()
-                
-                st.info(f"✅ Fetched {len(stock_data)} data points for {stock_symbol}")
+                    return
                 
                 # Step 2: Preprocess data
                 status_text.text("🔧 Preprocessing data...")
@@ -162,8 +160,6 @@ def main():
                 
                 preprocessor = DataPreprocessor(sequence_length)
                 X_train, y_train, X_test, y_test, scaler = preprocessor.prepare_data(stock_data)
-                
-                st.info(f"✅ Preprocessed data: Train size: {len(X_train)}, Test size: {len(X_test)}")
                 
                 # Step 3: Train model
                 status_text.text("🤖 Training LSTM model...")
